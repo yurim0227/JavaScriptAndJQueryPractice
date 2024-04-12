@@ -1,0 +1,20 @@
+<body>
+    <div id="div1" >
+        <h2>1번 클릭</h2>
+    </div>
+</body>
+<script type="text/javascript">
+   window.onload = function(){
+        // TODO 1: 1번 클릭 시, 이벤트 - on함수 selector만 사용
+        let div1 = document.querySelector("#div1");
+        let clickData = 1;
+        div1.onclick = function oneClick(){
+            let ele = document.createElement("h2");
+            let html = clickData+"-1번 클릭";
+           
+            div1.append(ele,html);
+            clickData+=1
+        }
+        
+    };
+</script>

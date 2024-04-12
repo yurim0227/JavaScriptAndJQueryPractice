@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+</head>
+<body>
+    <div>
+        셀렉트박스1: <select id="selectBox"></select>
+        셀렉트박스2: <select></select>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        const option1 = "<option>첫번째</option>",
+              option2 = "<option>두번째</option>",
+              option3 = "<option>세번째</option>";
+    
+        // TODO 1: 위의 3개 옵션을 셀렉트박스1에 추가        
+        $("#selectBox").append(option1);
+        $("#selectBox").append(option2);
+        $("#selectBox").append(option3);
+       // TODO 2: 'Select 순번 0번째 공통옵션'을 모든 셀렉트박스에 추가 : 0은 select Box 들의 index값으로 셀렉트박스1은 0, 셀렉트박스2는 1\
+       let selectCount = 0;
+       $("select").each(function(index,element){
+        let data = $(this);
+        $(data).prepend(`<option selected>Select 순번 ${selectCount}번째 공통옵션</option>`);
+        selectCount++ 
+       });
+       
+        // TODO 3: 텍스트박스를 두 개의 셀렉트박스 사이에 추가  
+        $("#selectBox").after("<input type='text' />")
+
+});
+</script>
+</html>

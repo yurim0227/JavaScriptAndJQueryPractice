@@ -1,0 +1,44 @@
+<html>
+    <body>
+        <input type="checkbox" id="allCheck"/>
+        <label id="all"><b>All</b></label>
+        <div id="checkItem">
+            <input type="checkbox"/><label>옵션1</label><br/>
+            <input type="checkbox"/><label>옵션2</label><br/>
+            <input type="checkbox"/><label>옵션3</label><br/>
+        </div>
+        <hr/>
+      <h5>입력 : </h5>
+        <textarea id="textArea" rows="5" cols="68"></textarea>
+        <div id="divArea">
+        </div>
+    
+    </body>
+    <script type="text/javascript">
+       window.onload = function(){
+            // TODO1 : All 체크박스를 체크/해제 하면
+            // 다른 모든 체크박스도 체크/해제
+            let all = document.querySelector("#allCheck");
+            all.addEventListener("click",function(){
+                let data = (this);
+                let checkboxs = document.querySelectorAll("input");
+                if(!all.checked){
+                    checkboxs.forEach(box=> box.checked=false)
+                }else{
+                    
+                    checkboxs.forEach(box=> box.checked=true)
+                }
+                
+            });
+            // TODO2: textArea의 텍스트가 변경되면 내용을 divArea에 복사
+            let textArea = document.querySelector("#textArea");
+            textArea.addEventListener("keyup",function(){
+                let data = (this).value;
+                let divArea = document.querySelector("#divArea");
+                divArea.innerText = data;
+            });
+    
+    };
+    
+    </script>    
+</html>

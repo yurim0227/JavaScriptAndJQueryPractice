@@ -1,0 +1,34 @@
+<body>
+    <h2>첫번째</h2>
+    <h2>두번째</h2>
+    <h2>세번째</h2>
+</body>
+
+<script type="text/javascript">
+    window.onload = function(){
+        let h2Tags = document.querySelectorAll("h2");
+       
+        
+        //TODO : 첫 번째 h2 태그의 click 이벤트 강제 발생
+        (function () {
+           let firstTag = h2Tags[0];
+           firstTag.append("*");
+        })()
+         // TODO: 모든 <h2> 태그에 click 핸들러 등록
+        // 이벤트가 발생되면 해당 텍스트 뒤에 별표(*)를 붙임 
+        let secondTag = h2Tags[1];
+        let thirdTag = h2Tags[2];
+        secondTag.addEventListener("click",addAsta);
+        thirdTag.addEventListener("click",addAsta);
+        function addAsta(){
+            let data = (this);
+            data.append("*");
+        }
+        /*
+        setInterval(function () {
+            // TODO : 첫 번째 h2 태그의 click 이벤트 강제 발생
+        }, 1000);
+        */
+    };
+
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>구구단</title>
+</head>
+<body onload="init();">
+    <h1>구구단</h1>
+    <select id="input_dan"></select>단
+    <button onclick="printGugudan();">출력</button><br />
+    <textarea id="result" rows="10" cols="30"></textarea>
+</body>
+<script type="text/javascript">
+
+function init() {
+  // TODO 1: #input_dan Select에 2~9단까지 option을 추가 한다.
+  let selectBox = document.querySelector("#input_dan");
+  let datas = [2,3,4,5,6,7,8,9];
+  for(data of datas){
+    let opt = document.createElement("option");
+    opt.value = data;
+    opt.text = data+"단";
+    selectBox.add(opt,null);
+  }
+}
+
+function printGugudan() {
+  // TODO 2: 출력버튼을 클릭 시, #input_dan에 해당하는 구구단을 출력한다.
+  
+  let selectBox = document.querySelector("#input_dan");
+  let data = selectBox.value;
+  let resultData = "";
+  for(let i = 1; i<10; i++){
+    resultData += data + " X " + i + " = " + (data*i)+"\n";
+  }
+  document.querySelector("#result").value=resultData;
+}
+</script>
+</html>

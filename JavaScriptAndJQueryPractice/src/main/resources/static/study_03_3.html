@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+</head>
+ 
+<body>
+</body>
+<script type="text/javascript">
+  $(document).ready(function () {
+    /*
+        3.호이스팅
+        JavaScript에서 호이스팅(hoisting)이란, 인터프리터가 변수와 함수의 메모리 공간을 선언 전에 미리 할당하는 것을 의미합니다.
+        JavaScript는 함수의 코드를 실행하기 전에 함수 선언에 대한 메모리부터 할당합니다. 
+        호이스팅은 (let과 const를 포함한) ECMAScript® 2015 언어 명세 이전의 표준 명세에는 나타나지 않았습니다.
+    */
+    function varTest(){
+        var a = 1;
+        if (true) { 
+            var a = 5;
+        } 
+        console.log("varTest:"+a); 
+    }
+    
+    function letTest(){
+        let  a = 1; 
+        if (true) { 
+            let  a = 5; 
+        } 
+        console.log("letTest:"+a); 
+    }
+
+    varTest();
+    letTest();
+});
+
+</script>
+</html>

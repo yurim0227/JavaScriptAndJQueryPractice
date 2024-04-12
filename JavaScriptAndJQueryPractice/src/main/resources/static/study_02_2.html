@@ -1,0 +1,31 @@
+<body>
+    <div class="call">
+        <h2>첫번째 강의</h2>
+        <p>자바스크립트 기초</p>
+    </div>
+    <div class="call">
+        <h2>두번째 강의</h2>
+        <p>jQuery</p>
+    </div>
+    <div class="call">
+        <h2>세번째 강의</h2>
+        <p>nodeJs</p>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = function(){
+        let div = document.querySelectorAll(".call");
+        div.forEach((target)=> target.addEventListener("click",alertEvent));
+        function alertEvent(){
+   
+            event.stopImmediatePropagation;
+            let data = (this);
+            // TODO 1: h2, p 텍스트 호출
+            let h2 = data.firstElementChild.innerText;
+            let p = data.lastElementChild.innerText;
+            // TODO 2: alert창 이벤트
+            alert("-"+h2+" \n-"+p);
+        };
+
+    };
+</script>

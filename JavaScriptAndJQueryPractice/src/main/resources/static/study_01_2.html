@@ -1,0 +1,200 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    </head>
+<body>
+    <h2>jQuery Attribute 셀렉터</h2>
+    <p>jQuery Attribute 셀렉터 테스트</p>
+    <div id="targets">
+        <input type="text" name="case1" value="jQuery"/><br/>
+        <input type="text" name="case2" value="jQuery 셀렉터"/><br/>
+        <input type="text" name="case3" value="jQuery 셀렉터 테스트"/><br/>
+        <input type="text" name="case4" value="셀렉터 테스트"/><br/>
+        <input type="text" name="case5" value="셀렉터테스트"/><br/>
+        <input type="text" name="case6" value="테스트"/><br/>
+    </div>
+    <div>
+        <button type="button" id="button1" onclick="backgroundChange('name')">name속성을 가짐</button>
+        <button type="button" id="button2">'jQuery' 일치</button>
+        <button type="button" id="button3" onclick="backgroundChange('noneJQuery')">'jQuery' 미일치</button>
+        <button type="button" id="button4" onclick="backgroundChange('selectWord')">'셀렉터' 단어 포함</button>
+        <button type="button" id="button5" onclick="backgroundChange('select')">'셀렉터' 포함</button>
+        <button type="button" id="button6" onclick="backgroundChange('startSelect')">'셀렉터'로 시작</button>
+        <button type="button" id="button7" onclick="backgroundChange('endSelect')">'셀렉터'로 끝남</button>
+        <button type="button" id="btn_clear">clear</button>
+    </div>
+    </body>
+    <script type="text/javascript">
+        const RED = "#FF0000";
+        const WHITE = "#ffff";
+            $(document).ready(function () {
+                //JavaScript 형식으로 구현
+                /*
+                let button2 = document.querySelector("#button2");
+                button2.addEventListener("click",function(){
+                    let texts = document.querySelectorAll("input");
+                    texts.forEach((text) => {
+                        if(text.value.indexOf("jQuery")==-1){
+                            text.style.background = WHITE;
+                        }else{
+                            text.style.background = RED;
+                        }
+                    });
+                });
+                */
+                /*
+                let btn_clear = document.querySelector("#btn_clear");
+                btn_clear.addEventListener("click",function(){
+                    let texts = document.querySelectorAll("input");
+                    texts.forEach((text) => {
+                        text.style.background = WHITE;
+                    });
+                });
+                */
+                //JQuery형식으로 구현
+                let button2 = $("#button2");
+                button2.on("click",function(){
+                    let texts = $("input");
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data[0].value.indexOf("jQuery")==-1){
+                            data.css("background",WHITE);
+                        }else{
+                            data.css("background",RED);
+                        }
+                    });
+                });
+                
+                let btn_clear = $("#btn_clear");
+                btn_clear.on("click",function(){
+                    let texts = $("input");
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        data.css("background",WHITE);
+                    });
+
+                });
+                
+            });
+            /*
+            //JavaScript 형식으로 구현
+            function backgroundChange(inParam){
+                let texts = document.querySelectorAll("input");
+                if(inParam=="name"){
+                    texts.forEach((text) => {
+                        if(text.hasAttribute("name")){
+                            text.style.background = RED;
+                        }else{
+                            text.style.background = WHITE;
+                        }
+
+                    })
+                }else if(inParam =="noneJQuery"){
+                    texts.forEach((text) => {
+                        if(text.value.indexOf("jQuery")==-1){
+                            text.style.background = RED;
+                        }else{
+                            text.style.background = WHITE;
+                        }
+                    });
+                }else if(inParam =="selectWord"){
+                    texts.forEach((text) => {
+                        if(text.value.indexOf("셀렉터")==-1){
+                            text.style.background = WHITE;
+                        }else{
+                            text.style.background = RED;
+                        }
+                    });
+                }else if(inParam =="select"){
+                    texts.forEach((text) => {
+                        if(text.value.indexOf("셀렉터") ==-1 || text.value.search(/\s/) == -1){
+                            text.style.background = WHITE;
+                        }else{
+                            text.style.background = RED;
+                        }
+                    });
+                }else if(inParam =="startSelect"){
+                    texts.forEach((text) => {
+                        if(text.value.indexOf("셀렉터")!=0){
+                            text.style.background = WHITE;
+                        }else{
+                            text.style.background = RED;
+                        }
+                    });
+                }
+                else if(inParam =="endSelect"){
+                    texts.forEach((text) => {
+                        if(text.value.indexOf("셀렉터")!=(text.value.length-3)){
+                            text.style.background = WHITE;
+                        }else{
+                            text.style.background = RED;
+                        }
+                    });
+                }
+            }
+            */
+           //JQuery형식으로 구현
+           function backgroundChange(inParam){
+                let texts = $("input");
+                let data = $(this);
+                if(inParam=="name"){
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data.is("[name]")==false){
+                            data.css("background",WHITE);
+                        }else{
+                            data.css("background",RED);
+                        }
+                    });
+                }else if(inParam =="noneJQuery"){
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data[0].value.indexOf("jQuery")){
+                            data.css("background",RED);
+                        }else{
+                            data.css("background",WHITE);
+                        }
+                    });
+                }else if(inParam =="selectWord"){
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data[0].value.indexOf("셀렉터")!=-1){
+                            data.css("background",RED);
+                        }else{
+                            data.css("background",WHITE);
+                        }
+                    });
+
+                }else if(inParam =="select"){
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data[0].value.indexOf("셀렉터") !=-1 && data[0].value.search(/\s/) != -1){
+                            data.css("background",RED);
+                        }else{
+                            data.css("background",WHITE);
+                        }
+                    });
+                }else if(inParam =="startSelect"){
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data[0].value.indexOf("셀렉터")==0){
+                            data.css("background",RED);
+                        }else{
+                            data.css("background",WHITE);
+                        }
+                    });
+                }
+                else if(inParam =="endSelect"){
+                    texts.each(function(index,element){
+                        let data = $(this);
+                        if(data[0].value.indexOf("셀렉터")==(data[0].value.length-3)){
+                            data.css("background",RED);
+                        }else{
+                            data.css("background",WHITE);
+                        }
+                    });
+                }
+            }
+    </script>
+</html>
